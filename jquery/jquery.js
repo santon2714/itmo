@@ -37,28 +37,25 @@ $(document).ready(function() {
 
     
     $("#fadeOut").click(() => {
-        $("#fadeOut").parent().siblings().children().fadeOut();
+        $("#fadeOut").parent().siblings().children().fadeOut(2000);
     });
 
     $("#fadeIn").click(() => {
-        $("#fadeIn").parent().siblings().children().fadeIn();
+        $("#fadeIn").parent().siblings().children().fadeIn(2000);
     });
 
     $("#fadeTo").click(() => {
-        $("#fadeTo").parent().siblings().children().fadeTo(1000, 0.4, "linear", () => alert('Fade To succeded!'));
+        $("#fadeTo").parent().siblings().children().fadeTo(2000, 0.1);
     });
 
     $("#slideDown").click(() => {
-        $("#slideDown").parent().siblings().children().slideDown();
+        $("#slideDown").parent().siblings().children().slideDown(2000);
     });
 
     $("#slideToggle").click(() => {
         $("#slideToggle").parent().siblings().children().slideToggle();
     });
 
-    $("#toggle").click(() => {
-        $("#toggle").parent().siblings().children().toggle();
-    });
 });
 
 
