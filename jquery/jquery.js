@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-// работа с селекторами
     $("p").css("color", "blue");
     $(".paragraph").css("fontSize", "50px");
     $(".anchor").css({
@@ -9,7 +8,6 @@ $(document).ready(function() {
     });
     $("form *").prop("disabled", true);
 
-// РАБОТА С DOM
     $(".anchor").prepend("↗");
     $(".anchor").attr("target", "_blank")
     $(".anchor").each(function () {
@@ -22,10 +20,7 @@ $(document).ready(function() {
         });
     });
 
-    /*
-    Добавить фиксированную кнопку (правый верхний угол) на страницу по
-    на которую что то происходит
-    */
+
     $('body').append('<button id = "knopka">Knopka</button>');
     $("#knopka").click(function () {
 
@@ -40,7 +35,7 @@ $(document).ready(function() {
         $(".anchor").removeAttr("target");
     });
 
-    // ЭФФЕКТЫ JQUERY
+    
     $("#fadeOut").click(() => {
         $("#fadeOut").parent().siblings().children().fadeOut();
     });
@@ -66,7 +61,7 @@ $(document).ready(function() {
     });
 });
 
-// AJAX Запросы в JQUERY
+
 $("#ajax").click(() => {
     $.ajax({
         url: "https://inxaoc.github.io/example/ajax-1.html"
@@ -76,34 +71,3 @@ $("#ajax").click(() => {
         $("body").append(pageContent);
     });
 });
-
-$.ajax({
-    url: "https://inxaoc.github.io/example/ajax.json"
-}).done((e) => {
-    let req = Object.assign({}, e);
-    console.log(req);
-    $("body").append(createList(req));
-});
-
-//prop - key, req[prop] - value
-/*
-1. Вызываем цикл
-2. Если value - объект, то выводим key
-	и далее начинаем перебирать его вложенные члены
-3. Если value - не объект, то выводим value
-*/
-function createList(element) {
-    let ul = document.createElement('ul');
-    for (const props in element) {
-        let li = document.createElement('li');
-        if (typeof (element[props]) !== 'object') {
-            li.innerText = element[props];
-        } else {
-            li.innerText = props;
-            // добавляет вложенный список в li
-            li.append(createList(element[props]));
-        }
-        ul.append(li);
-    }
-    return ul;
-}
